@@ -37,7 +37,6 @@ app.on('ready', function () {
 
 
   setInterval(function () {
-    // get the mouse position
     let mousePos = electron.screen.getCursorScreenPoint();
     console.log(mousePos);
     if (mousePos.x < 5 && mousePos.y > 850) {
