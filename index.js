@@ -15,7 +15,12 @@ app.on('window-all-closed', function () {
 });
 
 app.on('ready', function () {
-  mainWindow = new BrowserWindow({ width: 700, height: 800, alwaysOnTop: true });
+  mainWindow = new BrowserWindow({
+    width: 700, 
+    height: 800, 
+    alwaysOnTop: true,
+    icon: __dirname + '/icon.png'
+  });
   mainWindow.loadURL('https://youtube.com');
   mainWindow.setTitle("twitter");
   mainWindow.setPosition(-780, 1020);
