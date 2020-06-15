@@ -5,8 +5,10 @@ let mainWindow = null;
 const { remote } = require('electron')
 const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
+const clipboard = electron.clipboard;
 
 var checked = false;
+var nowURL = ""
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
@@ -36,8 +38,16 @@ app.on('ready', function () {
       checked = e.checked
     }
   }))
+  xmenu.append(new MenuItem({
+    type: "normal",
+    label: "URLをコピー",
+    click: function(e) {
+      clipboard.writeText(nowURL)
+    }
+  }))
   mainWindow.webContents.on('context-menu', function(e,params) {
-    xmenu.popup(mainWindow,params.x,params.y)
+    nowURL = params.linkURL
+    xmenu.popup(mainWindow,params.x - 50,params.y - 50)
   })
 
 
