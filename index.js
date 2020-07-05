@@ -54,7 +54,7 @@ app.on('ready', function () {
   setInterval(function () {
     let mousePos = electron.screen.getCursorScreenPoint();
     console.log(mousePos);
-    if (mousePos.x < 5 && mousePos.y > 850) {
+    if (!checked && mousePos.x < 5 && mousePos.y > 850) {
       mainWindow.setPosition(0, 850);
     }
     else {
