@@ -25,7 +25,7 @@ app.on('ready', function () {
   });
   mainWindow.loadURL('https://youtube.com');
   mainWindow.setTitle("twitter");
-  mainWindow.setPosition(-780, 1020);
+  mainWindow.setPosition(-780, 150);
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
@@ -54,12 +54,12 @@ app.on('ready', function () {
   setInterval(function () {
     let mousePos = electron.screen.getCursorScreenPoint();
     console.log(mousePos);
-    if (!checked && mousePos.x < 5 && mousePos.y > 850) {
-      mainWindow.setPosition(0, 850);
+    if (!checked && mousePos.x < 5 && mousePos.y > 150) {
+      mainWindow.setPosition(0, 150);
     }
     else {
       if (!checked && mousePos.x >= 750) {
-        mainWindow.setPosition(-780, 850);
+        mainWindow.setPosition(-780, 150);
       }
     }
   }, 1000);
