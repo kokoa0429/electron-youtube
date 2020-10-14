@@ -7,6 +7,8 @@ const Menu = electron.Menu;
 const MenuItem = electron.MenuItem;
 const clipboard = electron.clipboard;
 
+const option = true;
+
 var checked = false;
 var nowURL = ""
 
@@ -25,11 +27,10 @@ app.on('ready', function () {
   });
   mainWindow.loadURL('https://youtube.com');
   mainWindow.setTitle("twitter");
-  mainWindow.setPosition(-780, 150);
+  option ? mainWindow.hide() : mainWindow.setPosition(-730, 150);
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
-
   const xmenu = new Menu()
   xmenu.append(new MenuItem({
     type: "checkbox",
@@ -55,11 +56,11 @@ app.on('ready', function () {
     let mousePos = electron.screen.getCursorScreenPoint();
     console.log(mousePos);
     if (!checked && mousePos.x < 5 && mousePos.y > 150) {
-      mainWindow.setPosition(0, 150);
+      option ? mainWindow.show(): mainWindow.setPosition(0, 150);
     }
     else {
       if (!checked && mousePos.x >= 750) {
-        mainWindow.setPosition(-780, 150);
+        option ? mainWindow.hide() : mainWindow.setPosition(-780, 150);
       }
     }
   }, 1000);
